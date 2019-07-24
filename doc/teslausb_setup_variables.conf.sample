@@ -29,6 +29,12 @@ export camsize=100%
 # the folder needs to be different.
 # export musicsharename=your_music_share/music_folder
 
+# If this file exists in your music share, only the items specified will be
+# copied. Each line is a regex that's supported by egrep -f. Obtain patterns
+# from FILE, one per line. The empty file contains zero patterns, and
+# therefore matches nothing.
+# export music_whitelist=.teslausbWhitelist
+
 # Wifi setup information. Note that Raspberry Pi Zero W only supports 2.4 GHz wifi
 export SSID='your_ssid'
 export WIFIPASS='your_pass'

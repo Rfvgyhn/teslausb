@@ -7,6 +7,7 @@ NUM_FILES_SKIPPED=0
 NUM_FILES_ERROR=0
 SRC="/mnt/musicarchive"
 DST="/mnt/music"
+music_whitelist=${music_whitelist:-.teslausbWhitelist}
 
 while read file_name
 do
@@ -35,7 +36,7 @@ do
   else
     NUM_FILES_SKIPPED=$((NUM_FILES_SKIPPED + 1))
   fi
-done <<< "$(cd "$SRC"; find * -type f)"
+done <<< "$(cd "$SRC"; [ -e $music_whitelist ] && find * -type f | egrep -f $music_whitelist || find * -type f)"
 
 log "Copied $NUM_FILES_COPIED music file(s), skipped $NUM_FILES_SKIPPED previously-copied files, encountered $NUM_FILES_ERROR errors."
 
